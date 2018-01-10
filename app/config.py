@@ -1,6 +1,6 @@
 SECRET_KEY = '^s-local$'
-INTERFACE_NAME = 'enp7s0'
-# INTERFACE_NAME = 'wlp8s0'
+# INTERFACE_NAME = 'enp7s0'
+INTERFACE_NAME = 'wlp8s0'
 HOST = '0.0.0.0'
 PORT = 5000
 DEBUG = True
@@ -22,4 +22,5 @@ PROVINCE = {'tianjin': '天津', 'guangxi': '广西', 'ningxia': '宁夏', 'jili
             'qinghai': '青海', 'guangdong': '广东', 'xizang': '西藏', 'jiangxi': '江西', 'shanghai': '上海', 'xinjiang': '新疆',
             'beijing': '北京', 'hunan': '湖南', 'hubei': '湖北'}
 geoDbPath = '/home/yy/projects/ss-status-backend/GeoLite2-City.mmdb'
-grepStr = 'ss -atn |grep ESTAB | grep 80 |awk "{print $5}" |cut -d ":" -f1 |sort |uniq'
+grepStr = "ss -atn |grep ESTAB |grep :80 |awk '{print $5}' |cut -d ':' -f 1 |grep -v '*' |sort -u"
+

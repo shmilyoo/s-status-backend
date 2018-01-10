@@ -60,16 +60,18 @@ def get_ss_client():
     ss -atn |grep "162.243.136.175:80" |awk "{print $5}" |cut -d ":" -f1 |sort |uniq
     :return: 连接到ss服务器的用户数目
     """
-    # return len(ips)
-    # ls = ['49.80.205.41', '202.109.211.200', '117.136.19.125', '111.194.48.201', '218.5.157.116', '49.80.171.144',
-    #       '223.85.218.204', '202.109.211.201', '49.80.206.41', '49.80.215.41']
-    # import random
-    # random.shuffle(ls)
-    # ls = ls[0:random.randint(3, 10)]
+    ls = ['49.80.205.41', '202.109.211.200', '117.136.19.125', '111.194.48.201', '218.5.157.116', '49.80.171.144',
+          '223.85.218.204', '202.109.211.201', '49.80.206.41', '49.80.215.41']
+    import random
+    random.shuffle(ls)
+    ls = ls[0:random.randint(3, 10)]
+
+
     result = {}
     reader = geoip2.database.Reader(geoDbPath)
 
     ips = os.popen(grepStr).readlines()
+    ips = ls
     for ip in ips:
         try:
             response = reader.city(ip)

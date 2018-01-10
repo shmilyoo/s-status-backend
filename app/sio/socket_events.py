@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.sio import socketIO
 from threading import Lock
@@ -41,7 +41,7 @@ def background_thread():
         print('back number' + str(client_number))
         if client_number:
             socketIO.emit('backendSend',
-                          [datetime.utcnow().timestamp(),  get_cpu_percent(),
-                           get_mem_percent(), get_in_speed(), get_out_speed(),get_ss_client()],
+                          [datetime.utcnow().replace(tzinfo=timezone.utc).timestamp(), get_cpu_percent(),
+                           get_mem_percent(), get_in_speed(), get_out_speed(), get_ss_client()],
                           broadcast=True)
         time.sleep(3)
