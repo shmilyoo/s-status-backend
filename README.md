@@ -13,6 +13,9 @@ https://geoip2.readthedocs.io/en/latest
 
 2. modify the configuration of app/config.py
 
+    geoDbPath,grepStr,INTERFACE_NAME etc
+    
+
 3. create a mysql database, name it as config.DB_DB
 
 
