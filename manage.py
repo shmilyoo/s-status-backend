@@ -12,5 +12,5 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
-    from app.models.interface_rate import Cpu, Memory, Online, SpeedRate
+    from app.models.interface_rate import History
     manager.run()
