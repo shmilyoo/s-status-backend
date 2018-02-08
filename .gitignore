@@ -106,3 +106,4 @@ migrations/
 client.html
 GeoLite2-City.mmdb
 .idea/*
+uwsgi*

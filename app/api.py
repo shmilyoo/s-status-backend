@@ -1,4 +1,3 @@
-from datetime import datetime
 from flask import request, jsonify
 from app.models.interface_rate import History
 
@@ -6,11 +5,11 @@ from app.models.interface_rate import History
 def init_api(app):
     num_per_request = 17280  # 17280*5   为一天的总秒数，配置为一次请求最多获取一天的数据,与后台中的配置保持一致
 
-    @app.route('/history')
+    @app.route('/api/history')
     def history_index():
         pass
 
-    @app.route('/history/online', methods=['get'])
+    @app.route('/api/history/online', methods=['get'])
     def history_online():
         start, end, correct, message = check_utc_timestamp()
         if not correct:
@@ -22,7 +21,7 @@ def init_api(app):
             {'success': True,
              'data': [{'timestamp': history.timestamp, 'online': history.online} for history in record]})
 
-    @app.route('/history/cpu', methods=['get'])
+    @app.route('/api/history/cpu', methods=['get'])
     def history_cpu():
         start, end, correct, message = check_utc_timestamp()
         if not correct:
@@ -33,7 +32,7 @@ def init_api(app):
         return jsonify(
             {'success': True, 'data': [{'timestamp': history.timestamp, 'cpu': history.cpu} for history in record]})
 
-    @app.route('/history/memory', methods=['get'])
+    @app.route('/api/history/memory', methods=['get'])
     def history_memory():
         start, end, correct, message = check_utc_timestamp()
         if not correct:
@@ -45,7 +44,7 @@ def init_api(app):
             {'success': True,
              'data': [{'timestamp': history.timestamp, 'memory': history.memory} for history in record]})
 
-    @app.route('/history/flow', methods=['get'])
+    @app.route('/api/history/flow', methods=['get'])
     def history_flow():
         start, end, correct, message = check_utc_timestamp()
         if not correct:
