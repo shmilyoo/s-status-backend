@@ -34,5 +34,5 @@ rope==0.10.7
 six==1.11.0
 SQLAlchemy==1.1.15
 urllib3==1.22
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 yapf==0.20.0
